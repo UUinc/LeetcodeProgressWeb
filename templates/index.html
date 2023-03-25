@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leetcode Progress - Tracker</title>
+</head>
+<body>
+    <div>
+        <h1>Leetcode Progress - Tracker</h1>
+    </div>
+    {% block content %}
+    <ul>
+        {% for userData in data %}
+        <p>{{userData[0]}}</p>
+        <p>{{userData[1]}}</p>
+        <ul>
+            {% for ac in userData[2] %}
+            <li>{{ ac.text }}</li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js')}}"></script>
+</body>
+</html>

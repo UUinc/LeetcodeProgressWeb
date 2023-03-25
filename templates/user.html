@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block content %}
+<p>{{fullname}}</p>
+<p>{{nbr_problem_solved}}</p>
+<ul>
+    {% for ac in recent_ac %}
+    <li>{{ ac.text }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
