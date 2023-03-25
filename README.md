@@ -3,7 +3,6 @@
 
 
 ```
-pip install Flask
-pip install beautifulSoup4
-pip install requests
+pip install -r requirements.txt
+python app.py
 ```
