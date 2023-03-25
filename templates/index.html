@@ -17,14 +17,15 @@
                 <h1>LeetCode Progress</h1>
             </a>
         </div>
-        
-        {% block content %}
+        {% block searchbar %}
             <div class="app-searchbar app-card">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit">
+                <input id="searchbar" type="text" placeholder="Search.." name="search">
+                <button type="submit" onclick="Find()">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
+        {% endblock %}
+        {% block content %}
             {% for userData in data %}
             <div class="app-card">
                 <div class="app-card-info">

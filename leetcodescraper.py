@@ -39,6 +39,20 @@ def GetData():
     for user in id:
         usersData.append(GetUser(url+user))
     return usersData
+
+def GetDataFiltered(problem_name):
+    usersData = []
+    for user in id:
+        soup = GetPage(url+user)
+        fullname = GetFullName(soup)
+        avatar = GetAvatar(soup)
+        nbr_solved = GetSolvedSolutionNumber(soup)
+        recent_ac = GetRecentAC(soup)
+        for title in recent_ac:
+            if title.text == problem_name:
+                usersData.append((fullname,avatar,url+user,nbr_solved))      
+                break
+    return usersData
     
 def GetUser(url):
     soup = GetPage(url)

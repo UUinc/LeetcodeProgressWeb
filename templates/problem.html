@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block content %}
+{% for userData in data %}
+<div class="app-card">
+    <div class="app-card-info">
+        <img src="{{userData[1]}}" alt="Avatar" />
+        <div>
+            <a href="{{userData[2]}}" target="_blank">
+                <p class="app-card-info-fullname">{{userData[0]}}</p>
+            </a>
+            <p class="app-card-info-nbrsolved">{{userData[3]}} solved</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

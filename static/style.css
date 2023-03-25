@@ -91,7 +91,6 @@ body {
 .app-card-info
 {
     display: flex;
-    margin-bottom: 25px;
 }
 .app-card-info img
 {
@@ -116,6 +115,7 @@ body {
 .app-card ul
 {
     list-style-type: none;
+    margin-top: 25px;
 }
 .app-card li {
     padding: 15px;
