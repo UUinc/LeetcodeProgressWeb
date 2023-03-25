@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/LeetCode_logo_rvs.png')}}" />
     <title>LeetCode Progress</title>
@@ -11,22 +12,32 @@
 <body>
     <div id="app">
         <div class="app-title app-card">
-            <img src="{{ url_for('static', filename='img/LeetCode_logo_rvs.png')}}" alt="leetcode logo"/>
-            <h1>LeetCode Progress</h1>
+            <a href="/">
+                <img src="{{ url_for('static', filename='img/LeetCode_logo_rvs.png')}}" alt="leetcode logo"/>
+                <h1>LeetCode Progress</h1>
+            </a>
         </div>
         
         {% block content %}
+            <div class="app-searchbar app-card">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
             {% for userData in data %}
             <div class="app-card">
                 <div class="app-card-info">
                     <img src="{{userData[1]}}" alt="Avatar" />
                     <div>
-                        <p class="app-card-info-fullname">{{userData[0]}}</p>
-                        <p class="app-card-info-nbrsolved">{{userData[2]}} solved</p>
+                        <a href="{{userData[2]}}" target="_blank">
+                            <p class="app-card-info-fullname">{{userData[0]}}</p>
+                        </a>
+                        <p class="app-card-info-nbrsolved">{{userData[3]}} solved</p>
                     </div>
                 </div>
                 <ul>
-                    {% for ac in userData[3] %}
+                    {% for ac in userData[4] %}
                     <li>{{ ac.text }}</li>
                     {% endfor %}
                 </ul>

@@ -47,13 +47,4 @@ def GetUser(url):
     nbr_solved = GetSolvedSolutionNumber(soup)
     recent_ac = GetRecentAC(soup)
     
-    return fullname, avatar, nbr_solved, recent_ac
-
-def CheckProblemSolved(url, problem_name):
-    soup = GetPage(url)
-    fullname = GetFullName(soup)
-    recent_ac = GetRecentAC(soup)
-    for title in recent_ac:
-        if title.text == problem_name:
-            return True
-    return False
+    return fullname, avatar, url, nbr_solved, recent_ac

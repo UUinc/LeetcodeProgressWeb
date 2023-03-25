@@ -1,5 +1,6 @@
 :root {
     --background-color-white: #ffffff;
+    --background-color-dark-yellow: #e3a811;
     --background-color-yellow: #ffc01e;
     --background-color-green: #2cbb5d;
     --background-color-blue: #00b8a3;
@@ -30,9 +31,12 @@ body {
     background-color: var(--background-color-dark-gray);
 }
 /* App */
-.app-title {
+.app-title a
+{
     display: flex;
     align-items: center;
+    color: var(--text-color-white);
+    text-decoration: none;
 }
 .app-title h1
 {
@@ -43,6 +47,39 @@ body {
     width: 40px;
     padding-right: 15px;
 }
+/* Search Bar */
+.app-searchbar
+{
+    display: flex;
+}
+/* Style the search field */
+.app-searchbar input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    width: 90%;
+    color: var(--text-color-white);
+    background: #ffffff12;
+    border: 0;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+/* Style the submit button */
+.app-searchbar button {
+    width: 10%;
+    padding: 10px;
+    background: var(--background-color-dark-yellow);
+    color: white;
+    font-size: 17px;
+    border: 0;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.app-searchbar button:hover {
+    background: var(--background-color-yellow);
+}
+/* End Search Bar */
 .app-card
 {
     background-color: var(--background-color-gray);
@@ -63,6 +100,11 @@ body {
     object-fit: cover;
     margin-right: 20px;
     border-radius: 7px;
+}
+.app-card-info a 
+{
+    color: var(--text-color-white);
+    text-decoration: none;
 }
 .app-card-info-fullname {
     font-weight: 500;
