@@ -1,10 +1,17 @@
 {% extends "index.html" %}
 {% block content %}
-<p>{{fullname}}</p>
-<p>{{nbr_problem_solved}}</p>
-<ul>
-    {% for ac in recent_ac %}
-    <li>{{ ac.text }}</li>
-    {% endfor %}
-</ul>
+<div class="app-card">
+    <div class="app-card-info">
+        <img src="{{avatar}}" alt="Avatar"/>
+        <div>
+            <p class="app-card-info-fullname">{{fullname}}</p>
+            <p class="app-card-info-nbrsolved">{{nbr_problem_solved}} solved</p>
+        </div>
+    </div>
+    <ul>
+        {% for ac in recent_ac %}
+        <li>{{ ac.text }}</li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

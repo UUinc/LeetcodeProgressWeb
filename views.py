@@ -10,5 +10,5 @@ def home():
 
 @views.route("/user/<username>")
 def user(username):
-    fullname,nbr_solved,recent_ac = GetUser(url+username)
-    return render_template("user.html", fullname=fullname, nbr_problem_solved=nbr_solved, recent_ac=recent_ac)
+    fullname,avatar,nbr_solved,recent_ac = GetUser(url+username)
+    return render_template("user.html", fullname=fullname, avatar=avatar, nbr_problem_solved=nbr_solved, recent_ac=recent_ac)

@@ -24,6 +24,9 @@ def GetPage(url):
 def GetFullName(soup):
     return soup.findAll('div', attrs={"class": "text-label-1 dark:text-dark-label-1 break-all text-base font-semibold"})[0].text
 
+def GetAvatar(soup):
+    return soup.findAll('img', attrs={"class": "h-20 w-20 rounded-lg object-cover", "alt":"Avatar"})[0]['src']
+
 def GetSolvedSolutionNumber(soup):
     return int(soup.findAll('div', attrs={"class": "text-[24px] font-medium text-label-1 dark:text-dark-label-1"})[0].text)
 
@@ -40,10 +43,11 @@ def GetData():
 def GetUser(url):
     soup = GetPage(url)
     fullname = GetFullName(soup)
+    avatar = GetAvatar(soup)
     nbr_solved = GetSolvedSolutionNumber(soup)
     recent_ac = GetRecentAC(soup)
     
-    return fullname, nbr_solved, recent_ac
+    return fullname, avatar, nbr_solved, recent_ac
 
 def CheckProblemSolved(url, problem_name):
     soup = GetPage(url)

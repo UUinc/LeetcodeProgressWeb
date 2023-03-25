@@ -4,25 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leetcode Progress - Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/LeetCode_logo_rvs.png')}}" />
+    <title>LeetCode Progress</title>
 </head>
 <body>
-    <div>
-        <h1>Leetcode Progress - Tracker</h1>
-    </div>
-    {% block content %}
-    <ul>
-        {% for userData in data %}
-        <p>{{userData[0]}}</p>
-        <p>{{userData[1]}}</p>
-        <ul>
-            {% for ac in userData[2] %}
-            <li>{{ ac.text }}</li>
+    <div id="app">
+        <div class="app-title app-card">
+            <img src="{{ url_for('static', filename='img/LeetCode_logo_rvs.png')}}" alt="leetcode logo"/>
+            <h1>LeetCode Progress</h1>
+        </div>
+        
+        {% block content %}
+            {% for userData in data %}
+            <div class="app-card">
+                <div class="app-card-info">
+                    <img src="{{userData[1]}}" alt="Avatar" />
+                    <div>
+                        <p class="app-card-info-fullname">{{userData[0]}}</p>
+                        <p class="app-card-info-nbrsolved">{{userData[2]}} solved</p>
+                    </div>
+                </div>
+                <ul>
+                    {% for ac in userData[3] %}
+                    <li>{{ ac.text }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
             {% endfor %}
-        </ul>
-        {% endfor %}
-    </ul>
-    {% endblock %}
+        {% endblock %}
+    </div>
 
     <script type="text/javascript" src="{{ url_for('static', filename='index.js')}}"></script>
 </body>
