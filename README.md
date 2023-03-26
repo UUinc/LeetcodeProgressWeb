@@ -1,5 +1,12 @@
-# LeetcodeProgressWeb
- Flask web app for tracking group progress in LeetCode.com
+# LeetCode Progress
+Flask web app for tracking group progress in LeetCode.com
+
+### Live App
+You can test out the deployed app from this link:
+https://leetcode-progress.onrender.com
+
+![leetcodeprogress](https://user-images.githubusercontent.com/63449913/227782058-166a31f1-649c-4234-bb3c-60cd955d56a8.png)
+
 
 ### Build Command
 ```
@@ -9,10 +16,6 @@ pip install -r requirements.txt
 ```
 python app.py
 ```
-
-### Live App
-You can test out the deployed app from this link:
-https://leetcode-progress.onrender.com
 
 #### if you have any question feel free to ask :smile:
 
