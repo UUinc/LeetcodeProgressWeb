@@ -28,5 +28,6 @@ def user(username):
 
 @views.route("/refresh", methods=["POST"])
 def refresh():
+    global Data
     Data = GetData()
     return render_template("index.html", data=Data)
