@@ -31,12 +31,20 @@ body {
     background-color: var(--background-color-dark-gray);
 }
 /* App */
-.app-title a
+.app-title
 {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+}
+.app-title a
+{
     color: var(--text-color-white);
     text-decoration: none;
+}
+.app-title .title {
+    display: flex;
+    align-items: center;
 }
 .app-title h1
 {
@@ -47,6 +55,21 @@ body {
     width: 40px;
     padding-right: 15px;
 }
+/* Refresh button */
+.app-title-refresh
+{
+    width: 45px;
+    padding: 10px;
+    background: var(--background-color-dark-yellow);
+    color: white;
+    font-size: 17px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.app-title-refresh:hover {
+    background: var(--background-color-yellow);
+}
 /* Search Bar */
 .app-searchbar
 {
@@ -56,7 +79,7 @@ body {
 .app-searchbar input[type=text] {
     padding: 10px;
     font-size: 17px;
-    width: 90%;
+    width: 80%;
     color: var(--text-color-white);
     background: #ffffff12;
     border: 0;
@@ -66,7 +89,7 @@ body {
 
 /* Style the submit button */
 .app-searchbar button {
-    width: 10%;
+    width: 20%;
     padding: 10px;
     background: var(--background-color-dark-yellow);
     color: white;

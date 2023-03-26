@@ -13,9 +13,19 @@
     <div id="app">
         <div class="app-title app-card">
             <a href="/">
-                <img src="{{ url_for('static', filename='img/LeetCode_logo_rvs.png')}}" alt="leetcode logo"/>
-                <h1>LeetCode Progress</h1>
+                <div class="title">
+                    <img src="{{ url_for('static', filename='img/LeetCode_logo_rvs.png')}}" alt="leetcode logo"/>
+                    <h1>LeetCode Progress</h1>
+                </div>
             </a>
+            {% block refrech%}
+            <form action="/refresh" method="post">
+                <button class="app-title-refresh" type="submit">
+                    <i class="fa fa-refresh"></i>
+                </button>
+            </form>
+            {% endblock %}
+            
         </div>
         {% block searchbar %}
             <div class="app-searchbar app-card">

@@ -1,7 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
+from requests_futures.sessions import FuturesSession
+import time
 
-url = 'https://leetcode.com/';
+url = 'https://leetcode.com/'
 id = [
     'lazrek',
     'NassimNamous',
@@ -34,26 +36,45 @@ def GetRecentAC(soup):
     return soup.findAll('span', attrs={"class": "text-label-1 dark:text-dark-label-1 font-medium line-clamp-1"})
 
 #Main Functions
+def GetUserData(soup,link):
+    fullname = GetFullName(soup)
+    avatar = GetAvatar(soup)
+    nbr_solved = GetSolvedSolutionNumber(soup)
+    recent_ac = GetRecentAC(soup)
+    
+    return fullname, avatar, link, nbr_solved, recent_ac
+
+#Async Functions
 def GetData():
+    session = FuturesSession()
+    future = []
     usersData = []
     for user in id:
-        usersData.append(GetUser(url+user))
+        link = url+user
+        future_tmp = session.get(link)
+        future.append((future_tmp,link))
+        time.sleep(1)
+    for f,link in future:
+        response = f.result()
+        soup = BeautifulSoup(response.content, 'html.parser')
+        usersData.append(GetUserData(soup,link))
     return usersData
 
-def GetDataFiltered(problem_name):
-    usersData = []
-    for user in id:
-        soup = GetPage(url+user)
-        fullname = GetFullName(soup)
-        avatar = GetAvatar(soup)
-        nbr_solved = GetSolvedSolutionNumber(soup)
-        recent_ac = GetRecentAC(soup)
+def GetDataFiltered(data, problem_name):
+    filtredData = []
+    for userData in data:
+        fullname = userData[0]
+        avatar = userData[1]
+        link = userData[2]
+        nbr_solved = userData[3]
+        recent_ac = userData[4]
         for title in recent_ac:
             if title.text == problem_name:
-                usersData.append((fullname,avatar,url+user,nbr_solved))      
+                filtredData.append((fullname,avatar,link,nbr_solved))      
                 break
-    return usersData
-    
+    return filtredData 
+
+#Sync Function  
 def GetUser(url):
     soup = GetPage(url)
     fullname = GetFullName(soup)
