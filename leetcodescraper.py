@@ -58,6 +58,8 @@ def GetData():
         response = f.result()
         soup = BeautifulSoup(response.content, 'html.parser')
         usersData.append(GetUserData(soup,link))
+
+    usersData.sort(key=lambda a: a[3], reverse=True)
     return usersData
 
 def GetDataFiltered(data, problem_name):
