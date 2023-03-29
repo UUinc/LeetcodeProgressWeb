@@ -1,6 +1,9 @@
 # LeetCode Progress
 Flask web app for tracking group progress in LeetCode.com
 
+### Technologies Used
+Flask and Firebase
+
 ### Live App
 You can test out the deployed app from this link:
 https://leetcode-progress.onrender.com
