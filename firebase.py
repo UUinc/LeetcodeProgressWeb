@@ -1,8 +1,16 @@
-def SetFirebaseData():
-    doc_ref = db.collection(u'problems').document()
-    doc_ref.set(my_data)
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
-def GetFirebaseData(db):
+cred = credentials.Certificate("serviceAccountKey.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+
+def SetFirebaseData(new_problem):
+    doc_ref = db.collection(u'problems').document()
+    doc_ref.set(new_problem)
+
+def GetFirebaseData():
     problems = []
     problems_ref = db.collection(u'problems')
     problemsList = problems_ref.stream()
