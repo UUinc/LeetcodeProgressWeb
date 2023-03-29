@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% block problemslist %}
+{% endblock %}
+{% block refresh %}
+{% endblock %}
+{% block searchbar %}
+{% endblock %}
+{% block content %}
+<div class="app-card">
+    <ul>
+        {% for problem in data %}
+        <li>
+            <div class="problem-card">
+                <div class="problem-card-title">
+                    <a href="{{problem['link']}}" target="_blank"><p class="problem-card-title-name">{{ problem['name'] }}</p></a>
+                    <p class="problem-card-title-date">{{ problem['date'] }}</p>
+                </div>
+                {% if problem['difficulty'] == 'Easy' %}
+                <p class="problem-card-difficulty" style="color: var(--text-color-easy); background-color: var(--background-color-easy);">
+                {% elif problem['difficulty'] == 'Medium' %}
+                <p class="problem-card-difficulty" style="color: var(--text-color-medium); background-color: var(--background-color-medium);">
+                {% else %}
+                <p class="problem-card-difficulty" style="color: var(--text-color-hard); background-color: var(--background-color-hard);">
+                {% endif %}
+                {{ problem['difficulty'] }}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

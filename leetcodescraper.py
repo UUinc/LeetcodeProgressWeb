@@ -14,7 +14,8 @@ id = [
     'nezhari',
     'oussama-seme-elayne',
     'badertebaa2',
-    'ibarakate0'
+    'ibarakate0',
+    'larbiabbadelandaloussi'
 ]
 
 #Scrapper

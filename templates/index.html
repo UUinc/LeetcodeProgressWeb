@@ -18,14 +18,22 @@
                     <h1>LeetCode Progress</h1>
                 </div>
             </a>
-            {% block refrech%}
-            <form action="/refresh" method="post">
-                <button class="app-title-refresh" type="submit">
-                    <i class="fa fa-refresh"></i>
-                </button>
-            </form>
-            {% endblock %}
-            
+            <div class="app-title-options">
+                {% block problemslist%}
+                <form action="/problems" method="post">
+                    <button class="app-title-option" type="submit">
+                        <i class="fa fa-list"></i>
+                    </button>
+                </form>
+                {% endblock %}
+                {% block refresh%}
+                <form action="/refresh" method="post">
+                    <button class="app-title-option" type="submit">
+                        <i class="fa fa-refresh"></i>
+                    </button>
+                </form>
+                {% endblock %}
+            </div>
         </div>
         {% block searchbar %}
             <div class="app-searchbar app-card">
