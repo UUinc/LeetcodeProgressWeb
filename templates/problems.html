@@ -10,9 +10,9 @@
     <ul>
         {% for problem in data %}
         <li>
-            <div class="problem-card">
+            <a class="app-card-problem problem-card" href="{{problem['link']}}" target="_blank">
                 <div class="problem-card-title">
-                    <a href="{{problem['link']}}" target="_blank"><p class="problem-card-title-name">{{ problem['name'] }}</p></a>
+                    <p class="problem-card-title-name">{{ problem['name'] }}</p>
                     <p class="problem-card-title-date">{{ problem['date'] }}</p>
                 </div>
                 {% if problem['difficulty'] == 'Easy' %}
@@ -23,7 +23,7 @@
                 <p class="problem-card-difficulty" style="color: var(--text-color-hard); background-color: var(--background-color-hard);">
                 {% endif %}
                 {{ problem['difficulty'] }}</p>
-            </div>
+            </a>
         </li>
         {% endfor %}
     </ul>

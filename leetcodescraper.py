@@ -91,8 +91,8 @@ def GetDataFiltered(data, problem_name):
         link = userData[2]
         nbr_solved = userData[3]
         recent_ac = userData[4]
-        for title in recent_ac:
-            if title.text == problem_name:
+        for problem in recent_ac:
+            if problem['title'] == problem_name:
                 filtredData.append((fullname,avatar,link,nbr_solved))      
                 break
     return filtredData 

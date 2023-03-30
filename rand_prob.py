@@ -1,10 +1,11 @@
 import random
-import requests
+import json
 from datetime import datetime
 from firebase import SetFirebaseData, GetFirebaseData
 
-response = requests.get("https://leetcode.com/api/problems/all/")
-problemsAPI = response.json()["stat_status_pairs"]
+with open('leetcode_problems_api.json') as fp:
+    data = json.load(fp)
+problemsAPI = data["stat_status_pairs"]
 
 problemsList = GetFirebaseData()
 
