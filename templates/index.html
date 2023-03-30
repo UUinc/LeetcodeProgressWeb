@@ -55,7 +55,25 @@
                 </div>
                 <ul>
                     {% for ac in userData[4] %}
-                    <li>{{ ac.text }}</li>
+                    <li>
+                        <a class="app-card-problem problem-card" href="{{ ac['link'] }}" target="_blank">
+                            <div>
+                                <p class="problem-card-title-name">{{ ac['title'] }}</p>
+                                <p class="problem-card-title-date">{{ ac['time'] }}</p>
+                            </div>
+                            {% if ac['difficulty'] == 'Easy' %}
+                            <p class="problem-card-difficulty"
+                                style="color: var(--text-color-easy); background-color: var(--background-color-easy);">
+                                {% elif ac['difficulty'] == 'Medium' %}
+                                <p class="problem-card-difficulty"
+                                    style="color: var(--text-color-medium); background-color: var(--background-color-medium);">
+                                    {% else %}
+                                <p class="problem-card-difficulty"
+                                    style="color: var(--text-color-hard); background-color: var(--background-color-hard);">
+                                    {% endif %}
+                                    {{ ac['difficulty'] }}</p>
+                        </a>
+                    </li>
                     {% endfor %}
                 </ul>
             </div>

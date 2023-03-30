@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 from requests_futures.sessions import FuturesSession
 import time
+from rand_prob import problemsAPI
 
 url = 'https://leetcode.com/'
 id = [
@@ -33,15 +34,34 @@ def GetAvatar(soup):
 def GetSolvedSolutionNumber(soup):
     return int(soup.findAll('div', attrs={"class": "text-[24px] font-medium text-label-1 dark:text-dark-label-1"})[0].text)
 
-def GetRecentAC(soup):
-    return soup.findAll('span', attrs={"class": "text-label-1 dark:text-dark-label-1 font-medium line-clamp-1"})
+def GetRecentProblem(soup):
+    problemList = []
+    problemsInfo = soup.findAll('a')
+    for p in problemsInfo:
+        if "/submissions/detail/" in p['href']:
+            title = p.findAll('span', attrs={"class": "text-label-1 dark:text-dark-label-1 font-medium line-clamp-1"})[0].text
+            link = "https://leetcode.com"+p['href']
+            time = p.findAll('span', attrs={"class": "text-label-3 dark:text-dark-label-3 hidden whitespace-nowrap lc-md:inline"})[0].text
+            
+            difficulty = None
+            for problem in problemsAPI:
+                if title == problem["stat"]["question__title"]:
+                    level = problem["difficulty"]['level']
+                    if level == 1:
+                        difficulty = "Easy"
+                    elif level == 2:
+                        difficulty = "Medium"
+                    else:
+                        difficulty = "Hard"
+            problemList.append({"title":title, "link":link, "time":time, "difficulty":difficulty})
+    return problemList
 
 #Main Functions
 def GetUserData(soup,link):
     fullname = GetFullName(soup)
     avatar = GetAvatar(soup)
     nbr_solved = GetSolvedSolutionNumber(soup)
-    recent_ac = GetRecentAC(soup)
+    recent_ac = GetRecentProblem(soup)
     
     return fullname, avatar, link, nbr_solved, recent_ac
 
@@ -83,6 +103,11 @@ def GetUser(url):
     fullname = GetFullName(soup)
     avatar = GetAvatar(soup)
     nbr_solved = GetSolvedSolutionNumber(soup)
-    recent_ac = GetRecentAC(soup)
+    recent_ac = GetRecentProblem(soup)
     
     return fullname, avatar, url, nbr_solved, recent_ac
+
+
+# Delete after
+soup = GetPage("https://leetcode.com/lazrek/")
+GetRecentProblem(soup)

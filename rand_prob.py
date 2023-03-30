@@ -4,13 +4,12 @@ from datetime import datetime
 from firebase import SetFirebaseData, GetFirebaseData
 
 response = requests.get("https://leetcode.com/api/problems/all/")
+problemsAPI = response.json()["stat_status_pairs"]
 
 problemsList = GetFirebaseData()
 
 def get_random_problem_info(response):
-    problems = response.json()["stat_status_pairs"]
-    
-    random_problem = random.choice(problems)
+    random_problem = random.choice(problemsAPI)
     
     problem_name = random_problem["stat"]["question__title"]
     problem_slug = random_problem["stat"]["question__title_slug"]
