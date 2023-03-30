@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from views import views
+import rand_prob
 
 app = Flask(__name__)
 app.register_blueprint(views, url_prefix="/")
