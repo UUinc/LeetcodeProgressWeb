@@ -106,8 +106,3 @@ def GetUser(url):
     recent_ac = GetRecentProblem(soup)
     
     return fullname, avatar, url, nbr_solved, recent_ac
-
-
-# Delete after
-soup = GetPage("https://leetcode.com/lazrek/")
-GetRecentProblem(soup)
