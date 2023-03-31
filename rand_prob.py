@@ -7,6 +7,14 @@ with open('leetcode_problems_api.json') as fp:
     data = json.load(fp)
 problemsAPI = data["stat_status_pairs"]
 
+def get_only_free_problems(data):
+    newList = []
+    for d in data:
+        if d["paid_only"] == False:
+            newList.append(d)
+    return newList
+problemsAPI = get_only_free_problems(problemsAPI)
+
 problemsList = GetFirebaseData()
 
 def get_random_problem_info():
