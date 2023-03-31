@@ -9,7 +9,7 @@ problemsAPI = data["stat_status_pairs"]
 
 problemsList = GetFirebaseData()
 
-def get_random_problem_info(response):
+def get_random_problem_info():
     random_problem = random.choice(problemsAPI)
     
     problem_name = random_problem["stat"]["question__title"]
@@ -28,11 +28,11 @@ def get_random_problem_info(response):
 
 
 def Get_Random_Problem():
-    problem_name, problem_url, problem_difficulty = get_random_problem_info(response)
+    problem_name, problem_url, problem_difficulty = get_random_problem_info()
     while 1:
         if problem_name not in [ item['name'] for item in problemsList ]:
             break
-        problem_name, problem_url, problem_difficulty = get_random_problem_url(response)
+        problem_name, problem_url, problem_difficulty = get_random_problem_url()
 
     problemData = {"name": problem_name, "link": problem_url, "date": datetime.today().strftime('%d/%m/%Y'), "difficulty": problem_difficulty}
     return problemData
