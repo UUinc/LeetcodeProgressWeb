@@ -3,6 +3,7 @@ import json
 from datetime import datetime
 from firebase import SetFirebaseData, GetFirebaseData
 
+problemsList = GetFirebaseData()
 with open('leetcode_problems_api.json') as fp:
     data = json.load(fp)
 problemsAPI = data["stat_status_pairs"]
@@ -15,7 +16,6 @@ def get_only_free_problems(data):
     return newList
 problemsAPI = get_only_free_problems(problemsAPI)
 
-problemsList = GetFirebaseData()
 
 def get_random_problem_info():
     random_problem = random.choice(problemsAPI)
@@ -33,7 +33,6 @@ def get_random_problem_info():
     problem_url = f"https://leetcode.com/problems/{problem_slug}/"
 
     return (problem_name, problem_url, problem_difficulty)
-
 
 def Get_Random_Problem():
     problem_name, problem_url, problem_difficulty = get_random_problem_info()

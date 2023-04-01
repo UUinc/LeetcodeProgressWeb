@@ -2,6 +2,8 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
+from datetime import datetime
+
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
@@ -17,5 +19,5 @@ def GetFirebaseData():
     for problem in problemsList:
         problems.append(problem.to_dict())
     
-    problems.sort(key= lambda item: item['date'], reverse=True)
+    problems.sort(key=lambda item: datetime.strptime(item['date'], '%d/%m/%Y'), reverse=True)
     return problems
